@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>See Eightfold mapped to your talent strategy | Eightfold</title>
+  <meta name="description" content="Tailored views of how Eightfold's agentic talent intelligence maps to Delta Air Lines and HCA Healthcare." />
+  <style>
+    :root{
+      --bg:#0b0718;--bg-2:#140a2e;--panel:#17102f;--ink:#f5f2ff;--muted:#b9b0d4;
+      --line:rgba(255,255,255,.10);--violet:#7c3aed;--pink:#ec4899;
+      --grad:linear-gradient(90deg,#7c3aed 0%,#c026d3 50%,#ec4899 100%);
+      --radius:18px;--maxw:1140px;
+      font-family:"Inter","Helvetica Neue",Arial,system-ui,sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+    .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+    header.nav{position:sticky;top:0;z-index:30;background:rgba(11,7,24,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px}
+    .logo .mark{width:26px;height:26px;border-radius:8px;background:var(--grad)}
+    .nav-links{display:flex;gap:22px;font-size:15px;color:var(--muted)}
+    .nav-links a.active{color:var(--ink);font-weight:600}
+    .book{background:var(--grad);color:#fff;padding:10px 18px;border-radius:999px;font-weight:600;font-size:14px}
+    .hero{padding:90px 0 40px}
+    .eyebrow{color:var(--pink);text-transform:uppercase;letter-spacing:.12em;font-size:13px;font-weight:700}
+    h1{font-size:clamp(40px,6vw,64px);line-height:1.03;font-weight:800;margin:16px 0 18px;letter-spacing:-.02em;max-width:640px}
+    .sub{font-size:19px;color:var(--muted);max-width:560px}
+    .cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:20px 0 90px}
+    .acct-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:30px;position:relative;overflow:hidden;transition:transform .15s ease,border-color .15s ease}
+    .acct-card:hover{transform:translateY(-3px);border-color:rgba(236,72,153,.55)}
+    .acct-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--grad)}
+    .tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:18px}
+    .acct-card h3{font-size:26px;margin-bottom:10px}
+    .acct-card p{color:var(--muted);font-size:15px;margin-bottom:20px}
+    .acct-card .cta{font-weight:700}
+    footer{border-top:1px solid var(--line);padding:34px 0 90px}
+    footer .fl{font-weight:700;margin-bottom:12px}
+    footer .disc{color:var(--muted);font-size:13px;max-width:900px}
+    #scout-reset{position:fixed;left:18px;bottom:18px;z-index:60;background:rgba(23,16,47,.92);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:9px 15px;font-size:12px;cursor:pointer}
+    @media(max-width:820px){.cards{grid-template-columns:1fr}.nav-links{display:none}}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="index.html"><span class="mark"></span>Eightfold</a>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="delta.html">Delta</a>
+        <a href="hca.html">HCA</a>
+      </nav>
+      <a class="book" href="delta.html">Book a demo</a>
+    </div>
+  </header>
+
+  <section class="wrap hero">
+    <span class="eyebrow">Built for the enterprise</span>
+    <h1>See Eightfold mapped to <span class="grad-text">your talent strategy</span>.</h1>
+    <p class="sub">Explore a tailored view of how agentic AI and talent intelligence apply to your organization. Pick your account below and ask Scout.</p>
+  </section>
+
+  <section class="wrap">
+    <div class="cards">
+      <a class="acct-card" href="delta.html">
+        <span class="tag">Aviation</span>
+        <h3>Eightfold for Delta Air Lines</h3>
+        <p>Skills-first internal mobility and closing digital, pilot and mechanic skills gaps across a ~100,000-person, majority-frontline workforce.</p>
+        <span class="cta grad-text">View the Delta brief &rarr;</span>
+      </a>
+      <a class="acct-card" href="hca.html">
+        <span class="tag">Healthcare</span>
+        <h3>Eightfold for HCA Healthcare</h3>
+        <p>High-volume clinical hiring, faster and fairer, while cutting nurse turnover and costly reliance on travel and agency staffing.</p>
+        <span class="cta grad-text">View the HCA brief &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    <div class="fl">Talent intelligence, human-led</div>
+    <div class="disc">Demonstration site for the Scout ABM agent. Not an official Eightfold, Delta Air Lines or HCA Healthcare property. Content adapted from public Eightfold messaging for demo purposes only.</div>
+  </footer>
+
+  <div id="scout-reset" onclick="(async()=>{try{await window.AISeller.resetContext();}catch(e){}try{localStorage.clear();sessionStorage.clear();}catch(e){}location.reload();})()">Reset agent session</div>
+
+  <script>
+    window.AISellerSettings = {
+      agent_id: 'bb1e9ccf-39bc-4438-b869-85709083677c',
+    };
+    (function () {
+      var w = window;
+      var ew = w.AISeller;
+      if (typeof ew === 'function') {
+        ew('update', w.AISellerSettings);
+      } else {
+        var d = document;
+        var i = function () { i.q.push(arguments); };
+        i.q = [];
+        i.q.push(['update', w.AISellerSettings]);
+        w.AISeller = i;
+        var l = function () {
+          var s = d.createElement('script');
+          s.type = 'text/javascript';
+          s.async = true;
+          s.src = 'https://d33t2173eag6fx.cloudfront.net/script/app/inbound-se-script/ai-seller.js';
+          var x = d.getElementsByTagName('script')[0];
+          x.parentNode.insertBefore(s, x);
+        };
+        if (w.attachEvent) { w.attachEvent('onload', l); }
+        else { w.addEventListener('load', l, false); }
+      }
+    })();
+  </script>
+
+  <script>
+    (async function () {
+      var start = Date.now();
+      while (!(window.AISeller && typeof window.AISeller.resetContext === "function")) {
+        if (Date.now() - start > 15000) { return; }
+        await new Promise(function (r) { setTimeout(r, 100); });
+      }
+      try { await window.AISeller.resetContext(); console.log("[Scout] home: context reset"); }
+      catch (e) { console.error("[Scout] resetContext failed", e); }
+    })();
+  </script>
+</body>
+</html>
