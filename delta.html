@@ -152,10 +152,12 @@
 
   <div id="scout-reset" onclick="(async()=>{try{await window.AISeller.resetContext();}catch(e){}try{localStorage.clear();sessionStorage.clear();}catch(e){}location.reload();})()">Reset agent session</div>
 
+  <!-- Docket Marketing Agent (Scout) snippet -->
   <script>
     window.AISellerSettings = {
-      agent_id: 'bb1e9ccf-39bc-4438-b869-85709083677c',
+      agent_id: '64f8ac7d-b7b5-4cd7-be7e-8e9ce4df8165',
     };
+    // Then load the widget loader script
     (function () {
       var w = window;
       var ew = w.AISeller;
@@ -163,7 +165,9 @@
         ew('update', w.AISellerSettings);
       } else {
         var d = document;
-        var i = function () { i.q.push(arguments); };
+        var i = function () {
+          i.q.push(arguments);
+        };
         i.q = [];
         i.q.push(['update', w.AISellerSettings]);
         w.AISeller = i;
@@ -175,12 +179,18 @@
           var x = d.getElementsByTagName('script')[0];
           x.parentNode.insertBefore(s, x);
         };
-        if (w.attachEvent) { w.attachEvent('onload', l); }
-        else { w.addEventListener('load', l, false); }
+        if (document.readyState === 'complete') {
+          l();
+        } else if (w.attachEvent) {
+          w.attachEvent('onload', l);
+        } else {
+          w.addEventListener('load', l, false);
+        }
       }
     })();
   </script>
 
+  <!-- Dynamic Context Ingestion for DELTA: company name + pain point handed to Scout. -->
   <script>
     var PAGE_CONTEXT = {
       company_name: "Delta Air Lines",
