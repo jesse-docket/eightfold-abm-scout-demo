@@ -153,24 +153,24 @@
 
   <div id="scout-reset" onclick="(async()=>{try{await window.AISeller.resetContext();}catch(e){}try{localStorage.clear();sessionStorage.clear();}catch(e){}location.reload();})()">Reset agent session</div>
 
-  <!-- Docket Marketing Agent (Scout) snippet -->
+  <!-- Docket Marketing Agent (Scout) — Dynamic Context set at INIT so it lands before the agent greets -->
   <script>
-    window.AISellerSettings = {
-      agent_id: '64f8ac7d-b7b5-4cd7-be7e-8e9ce4df8165',
+    window.AISellerSettings = { agent_id: '64f8ac7d-b7b5-4cd7-be7e-8e9ce4df8165' };
+    var PAGE_CONTEXT = {
+      company_name: "HCA Healthcare",
+      industry: "Healthcare",
+      key_pain: "filling high-volume clinical roles quickly and fairly while reducing nurse turnover and costly reliance on travel and agency staffing across roughly 190 hospitals and hundreds of care sites"
     };
-    // Then load the widget loader script
     (function () {
-      var w = window;
-      var ew = w.AISeller;
+      var w = window, d = document, ew = w.AISeller;
       if (typeof ew === 'function') {
         ew('update', w.AISellerSettings);
+        ew('setContext', PAGE_CONTEXT);
       } else {
-        var d = document;
-        var i = function () {
-          i.q.push(arguments);
-        };
+        var i = function () { i.q.push(arguments); };
         i.q = [];
         i.q.push(['update', w.AISellerSettings]);
+        i.q.push(['setContext', PAGE_CONTEXT]);
         w.AISeller = i;
         var l = function () {
           var s = d.createElement('script');
@@ -180,39 +180,19 @@
           var x = d.getElementsByTagName('script')[0];
           x.parentNode.insertBefore(s, x);
         };
-        if (document.readyState === 'complete') {
-          l();
-        } else if (w.attachEvent) {
-          w.attachEvent('onload', l);
-        } else {
-          w.addEventListener('load', l, false);
-        }
+        if (document.readyState === 'complete') { l(); }
+        else if (w.attachEvent) { w.attachEvent('onload', l); }
+        else { w.addEventListener('load', l, false); }
       }
     })();
-  </script>
-
-  <!-- Dynamic Context Ingestion for HCA: company name + pain point handed to Scout. -->
-  <script>
-    var PAGE_CONTEXT = {
-      company_name: "HCA Healthcare",
-      industry: "Healthcare",
-      key_pain: "filling high-volume clinical roles quickly and fairly while reducing nurse turnover and costly reliance on travel and agency staffing across roughly 190 hospitals and hundreds of care sites"
-    };
     (async function () {
-      var start = Date.now();
+      var t = Date.now();
       while (!(window.AISeller && typeof window.AISeller.setContext === "function")) {
-        if (Date.now() - start > 15000) {
-          console.error("[Scout] AISeller SDK not ready within 15s; context not sent.");
-          return;
-        }
-        await new Promise(function (r) { setTimeout(r, 100); });
+        if (Date.now() - t > 15000) return;
+        await new Promise(function (r) { setTimeout(r, 50); });
       }
-      try {
-        var res = await window.AISeller.setContext(PAGE_CONTEXT);
-        console.log("[Scout] context sent", PAGE_CONTEXT, res);
-      } catch (e) {
-        console.error("[Scout] setContext failed", e);
-      }
+      try { var res = await window.AISeller.setContext(PAGE_CONTEXT); console.log("[Scout] context sent", PAGE_CONTEXT, res); }
+      catch (e) { console.error("[Scout] setContext failed", e); }
     })();
   </script>
 </body>
